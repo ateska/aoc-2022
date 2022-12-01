@@ -3,7 +3,7 @@ const print = @import("std").debug.print;
 
 fn cmpElf(context: void, a: u64, b: u64) bool {
 	_ = context;
-  return (a > b);
+	return (a > b);
 }
 
 pub fn main() !void {
