@@ -1,7 +1,7 @@
 const std = @import("std");
 const print = @import("std").debug.print;
 
-fn cmpElf(context: void, a: u64, b: u64) bool {
+fn cmp_elf(context: void, a: u64, b: u64) bool {
 	_ = context;
 	return (a > b);
 }
@@ -30,7 +30,7 @@ pub fn main() !void {
 	}
 
 	var x = elf_array.toOwnedSlice();
-	std.sort.sort(u64, x, {}, cmpElf);
+	std.sort.sort(u64, x, {}, cmp_elf);
 
 	var sum: u64 = 0;
 	for (x) | calorie, index | {
