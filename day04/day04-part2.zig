@@ -35,12 +35,12 @@ pub fn main() !void {
 		const r2a = readInt(line, '-', r1b.pos);
 		const r2b = readInt(line, '\n', r2a.pos);
 
-		// 1st range is completelly bellow the second ranga
+		// 1st range is completelly bellow the 2nd range
 		if (r1b.n < r2a.n) {
 			continue;
 		}
 
-		// 1st range is completelly above the second ranga
+		// 1st range is completelly above the 2nd range
 		if (r1a.n > r2b.n) {
 			continue;
 		}
