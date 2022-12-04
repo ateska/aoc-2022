@@ -35,38 +35,18 @@ pub fn main() !void {
 		const r2a = readInt(line, '-', r1b.pos);
 		const r2b = readInt(line, '\n', r2a.pos);
 
-		// A of 1st range is in the 2nd range
-		//       |A -- 1 --
-		// |A -- 2 -- B| 
-		if ((r1a.n>=r2a.n) and (r1a.n<=r2b.n)) {
-			total_score += 1;
+		// 1st range is completelly bellow the second ranga
+		if (r1b.n < r2a.n) {
 			continue;
 		}
 
-		// B of 1st range is in the 2nd range
-		//    -- 1 -- B|
-		//       |A -- 2 -- B| 
-		if ((r1b.n>=r2b.n) and (r1b.n<=r2b.n)) {
-			total_score += 1;
+		// 1st range is completelly above the second ranga
+		if (r1a.n > r2b.n) {
 			continue;
 		}
 
-		// A of 2nd range is in the 1st range
-		//  |A -- 1 -- B|
-		//        |A -- 2 --
-		if ((r2a.n>=r1a.n) and (r2a.n<=r1b.n)) {
-			total_score += 1;
-			continue;
-		}
-
-		// B of 2nd range is in the 1st range
-		//       |A -- 1 -- B|
-		//    -- 2 -- B|
-		if ((r2b.n>=r1a.n) and (r2b.n<=r1b.n)) {
-			total_score += 1;
-			continue;
-		}
-
+		// Everything else is the overlap
+		total_score += 1;
 	}
 
 	print("Result: {d}\n", .{total_score});
