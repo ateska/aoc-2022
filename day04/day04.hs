@@ -1,20 +1,18 @@
 import Text.Parsec
 import Text.Parsec.Text
 
-ranges = many1 rangeline
+ranges = many1 range
 
-rangeline = do
-    r1a <- digits
+range = do
+    r1a <- many1 digit
     char '-'
-    r1b <- digits
+    r1b <- many1 digit
     char ','
-    r2a <- digits
+    r2a <- many1 digit
     char '-'
-    r2b <- digits
+    r2b <- many1 digit
     newline
     return (read r1a :: Integer, read r1b :: Integer, read r2a :: Integer, read r2b :: Integer)
-
-digits = many1 digit
 
 score1 :: (Integer, Integer, Integer, Integer) -> Integer
 score1 (r1a, r1b, r2a, r2b) = 
