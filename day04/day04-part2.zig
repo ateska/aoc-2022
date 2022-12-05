@@ -1,7 +1,7 @@
 const std = @import("std");
 const print = @import("std").debug.print;
 
-pub fn readInt(line: []u8, until: u8, pos: u64) struct { n: u64, pos: u64} {
+pub fn readInt(line: []u8, until: u8, pos: u64) struct { n: u64, pos: u64 } {
 	var n: u64 = 0;
 	var i: u64 = pos;
 	while (i < line.len) {
