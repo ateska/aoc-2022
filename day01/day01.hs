@@ -1,5 +1,5 @@
-import Text.ParserCombinators.Parsec
 import Data.List
+import Text.ParserCombinators.Parsec
 
 elfs :: GenParser Char st [Integer]
 elfs = 
@@ -9,18 +9,14 @@ elfs =
 elf :: GenParser Char st Integer
 elf = 
     do c <- many1 calories
-       eol
+       newline
        return (sum c)
 
 calories :: GenParser Char st Integer
 calories = 
     do digits <- many1 digit
-       eol
-       let result = read digits :: Integer
-       return result
-
-eol :: GenParser Char st Char
-eol = char '\n'
+       newline
+       return (read digits :: Integer)
 
 main :: IO()
 main = do
