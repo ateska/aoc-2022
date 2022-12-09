@@ -11,7 +11,6 @@ pub fn main() !void {
 
 	var buf: [1024]u8 = undefined;
 
-
 	var total_score: u64 = 0;
 
 	while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
