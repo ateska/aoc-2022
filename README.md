@@ -8,3 +8,4 @@
 * Day 06 in Zig
 * Day 07 in Python
 * Day 08 in Zig
+* Day 09 in Zig
