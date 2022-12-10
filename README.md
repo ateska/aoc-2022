@@ -1,6 +1,6 @@
 # Advent of Code 2022
 
-* Day 01 in Zig, Haskell
+* Day 01 in Zig, Haskell, Go
 * Day 02 in Zig, Haskell
 * Day 03 in Zig
 * Day 04 in Zig, Haskell
