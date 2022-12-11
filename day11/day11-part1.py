@@ -4,20 +4,19 @@ import re
 class Item(object):
 
 	def __init__(self, worry_level):
-		worry_level = int(worry_level)
-		self.Value = worry_level
+		self.WorryLevel = int(worry_level)
 
 	def mul(self, argument):
-		self.Value *= argument
+		self.WorryLevel *= argument
 
 	def plus(self, argument):
-		self.Value += argument
+		self.WorryLevel += argument
 
 	def power2(self):
-		self.Value = self.Value * self.Value
+		self.WorryLevel = self.WorryLevel * self.WorryLevel
 
 	def relief(self):
-		self.Value = self.Value // 3
+		self.WorryLevel = self.WorryLevel // 3
 
 
 class Monkey(object):
@@ -52,7 +51,7 @@ class Monkey(object):
 
 		item.relief()
 
-		if (item.Value % self.TestDiv) == 0:
+		if (item.WorryLevel % self.TestDiv) == 0:
 			return (self.IfTrue, item)
 		else:
 			return (self.IfFalse, item)
