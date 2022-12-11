@@ -1,24 +1,5 @@
 import re
 
-
-class Item(object):
-
-	def __init__(self, worry_level):
-		self.WorryLevel = int(worry_level)
-
-	def mul(self, argument):
-		self.WorryLevel *= argument
-
-	def plus(self, argument):
-		self.WorryLevel += argument
-
-	def power2(self):
-		self.WorryLevel = self.WorryLevel * self.WorryLevel
-
-	def relief(self):
-		self.WorryLevel = self.WorryLevel % (2 * 3 * 5 * 7 * 11 * 13 * 17 * 19)
-
-
 class Monkey(object):
 
 	def __init__(self, monid, items, operation, argument, testdiv, iftrue, iffalse):
@@ -36,25 +17,24 @@ class Monkey(object):
 		self.Counter = 0
 
 	def round(self):
-		item = self.Items.pop(0)
+		self.Counter += 1
+		worry_level = self.Items.pop(0)
 
-		if self.Operation == '*': 
-			item.mul(self.Argument)
-		elif self.Operation == '+': 
-			item.plus(self.Argument)
-		elif self.Operation == '^': 
-			item.power2()
+		if self.Operation == '*':
+			worry_level *= self.Argument
+		elif self.Operation == '+':
+			worry_level += self.Argument
+		elif self.Operation == '^':
+			worry_level = worry_level * worry_level
 		else:
 			raise RuntimeError("Unknown operation '{}'".format(self.Operation))
 
-		self.Counter += 1
+		worry_level = worry_level % (2 * 3 * 5 * 7 * 11 * 13 * 17 * 19)
 
-		item.relief()
-
-		if (item.WorryLevel % self.TestDiv) == 0:
-			return (self.IfTrue, item)
+		if (worry_level % self.TestDiv) == 0:
+			return (self.IfTrue, worry_level)
 		else:
-			return (self.IfFalse, item)
+			return (self.IfFalse, worry_level)
 
 
 def main():
@@ -70,7 +50,7 @@ def main():
 	for instruction in rg.findall(instructions):
 		monkey = Monkey(
 			monid=int(instruction[0]),
-			items=[Item(x) for x in instruction[1].strip().split(', ')],
+			items=[int(x) for x in instruction[1].strip().split(', ')],
 			operation=instruction[4],
 			argument=instruction[5],
 			testdiv=int(instruction[6]),
